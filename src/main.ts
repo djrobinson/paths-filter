@@ -83,7 +83,9 @@ async function getChangedFiles(token: string, base: string, ref: string, initial
     }
     return await git.getChangesOnHead()
   }
-
+  console.log('github.context.eventName', github.context.eventName)
+  console.log('github.context.payload', github.context.payload)
+  // Check if the event is a pull request event
   const prEvents = ['pull_request', 'pull_request_review', 'pull_request_review_comment', 'pull_request_target']
   if (prEvents.includes(github.context.eventName)) {
     if (ref) {
